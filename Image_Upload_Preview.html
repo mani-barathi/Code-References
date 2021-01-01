@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 500px;
+            height: 500px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 700px;
+            object-fit: contain;
+            max-height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="" alt="">
+        <form>
+            <input type="file" name="image" id="image" onchange="previewImage(this)">
+        </form>
+
+    </div>
+    <script>
+        const previewImage = (element) => {
+            const image = element.files[0];
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                console.log(reader.result)
+                document.querySelector('img').src = reader.result;
+            };
+            reader.readAsDataURL(image);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        body {
+            background: whitesmoke;
+            font-family: -apple-system, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .app-container {
+            width: 100%;
+            display: grid;
+            place-items: center;
+            padding-bottom: 100px;
+        }
+
+        .grid-container {
+            width: 90%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-template-rows: auto auto;
+            grid-gap: 0.6rem;
+        }
+
+        .wide {
+            grid-column: auto/span 2;
+            grid-row: auto/span 1;
+        }
+
+        .tall {
+            grid-column: auto/span 1;
+            grid-row: auto/span 2;
+        }
+
+        .square {
+            grid-column: auto/span 1;
+            grid-row: auto/span 1;
+        }
+
+        .grid-item img {
+            object-fit: cover;
+            display: block;
+            width: 100%;
+            height: 100%;
+            transition: .2s;
+        }
+
+        .grid-item img:hover {
+            filter: brightness(80%);
+        }
+
+        @media only screen and (max-width:700px) {
+            .grid-container {
+                width: 95%;
+                display: grid;
+                grid-template-columns: auto auto;
+                grid-template-rows: auto auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style=" text-align: center; padding: 3rem 0rem;">
+        <h1 style="font-weight: 400;font-size: 4rem;"> Capturing life. Creating art </h1>
+        <p>Created By Manibarathi </p>
+    </div>
+
+    <div class="app-container">
+
+        <div class="grid-container">
+
+            <div class="grid-item tall">
+                <img src="https://unsplash.it/301/600" alt="" class="grid-item-img">
+            </div>
+            <div class="grid-item tall">
+                <img src="https://unsplash.it/302/600" alt="" class="grid-item-img">
+            </div>
+
+            <div class="grid-item square">
+                <img src="https://unsplash.it/301/300" alt="" class="grid-item-img">
+            </div>
+            <div class="grid-item square">
+                <img src="https://unsplash.it/295/295" alt="" class="grid-item-img">
+            </div>
+
+
+            <div class="grid-item wide">
+                <img src="https://unsplash.it/602/300" alt="" class="grid-item-img">
+            </div>
+
+
+            <div class="grid-item square">
+                <img src="https://unsplash.it/304/300" alt="" class="grid-item-img">
+            </div>
+            <div class="grid-item square">
+                <img src="https://unsplash.it/305/300" alt="" class="grid-item-img">
+            </div>
+            <div class="grid-item square">
+                <img src="https://unsplash.it/302/300" alt="" class="grid-item-img">
+            </div>
+            <div class="grid-item square">
+                <img src="https://unsplash.it/290/290" alt="" class="grid-item-img">
+            </div>
+
+            <div class="grid-item wide">
+                <img src="https://unsplash.it/601/300" alt="" class="grid-item-img">
+            </div>
+
+            <div class="grid-item tall">
+                <img src="https://unsplash.it/303/600" alt="" class="grid-item-img">
+            </div>
+            <div class="grid-item tall">
+                <img src="https://unsplash.it/300/600" alt="" class="grid-item-img">
+            </div>
+
+            <div class="grid-item square">
+                <img src="https://unsplash.it/300/305" alt="" class="grid-item-img">
+            </div>
+            <div class="grid-item square">
+                <img src="https://unsplash.it/300/300" alt="" class="grid-item-img">
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
