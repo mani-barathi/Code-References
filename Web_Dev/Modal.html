@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI';
+            background-color: whitesmoke;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            /*  can also be center */
+            align-items: flex-start;
+            /* padding-top is needed if align-items: flex-start */
+            padding-top: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .show-modal-overlay {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: whitesmoke;
+            width: 90%;
+            max-width: 600px;
+            padding: 1rem;
+            border-radius: 5px;
+            z-index: 10;
+            transform: translateY(-50%);
+            transition: transform 0.5s ease;
+        }
+
+        .show-modal {
+            transform: translateY(0%);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-close-btn {
+            font-weight: bold;
+            font-size: x-large;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            outline: none;
+        }
+
+        .modal-body {
+            border-top: 2px solid lightgray;
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn" style="margin: 1rem;">Click Here</button>
+
+    <div class="modal-overlay">
+        <div class="modal">
+            <div class="modal-header">
+                <h1>This is the Title of the Modal</h1>
+                <button class="modal-close-btn"> &times; </button>
+            </div>
+            <div class="modal-body">
+                <h3>This is Subtitle of the Modal</h3>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit reprehenderit repellendus quis impedit
+                    similique culpa alias error nostrum eum unde. Nobis alias voluptatem adipisci illo quia nihil sed
+                    iustoratione, placeat eos sit unde doloremque incidunt non aliquam dicta eaque officiis repudiandae
+                    atconsequatur. Iusto commodi voluptatum corporis laborum officia.</p>
+                <button class="modal-ok-btn" style="margin: 0.5rem 0;font-weight: bold;font-size: large;">
+                    ok
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const mainBtn = document.querySelector('.btn')
+        const closeModalBtn = document.querySelector('.modal-close-btn')
+        const modalOkBtn = document.querySelector('.modal-ok-btn')
+        const modalOverlay = document.querySelector('.modal-overlay')
+        const modal = document.querySelector('.modal')
+
+        function openModal() {
+            modalOverlay.classList.add('show-modal-overlay')
+            modal.classList.add('show-modal')
+        }
+
+        function closeModal() {
+            modal.classList.remove('show-modal')
+            modalOverlay.classList.remove('show-modal-overlay')
+        }
+
+        // CLicking Outside the modal in the modal-overlay when the modal is open
+        function handleModalOverlayClick(event) {
+            if (event.target == modalOverlay)
+                closeModal()
+        }
+
+        // Eventlistners
+        mainBtn.addEventListener('click', openModal)
+        closeModalBtn.addEventListener('click', closeModal)
+        modalOkBtn.addEventListener('click', closeModal)
+        modalOverlay.addEventListener('click', handleModalOverlayClick)
+    </script>
+
+</body>
+
+</html>
