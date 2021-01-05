@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam (video and Snap)</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        video {
+            width: 90%;
+            max-width: 720px;
+            max-height: 480px;
+            object-fit: contain;
+        }
+
+        canvas {
+            display: none;
+        }
+
+        button {
+            margin: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <video autoplay></video>
+    <canvas width="320" height="240"></canvas>
+    <button class="btn" onclick="takeSnap()">Take Photo</button>
+    <a href="" download>
+        <img src="" alt="">
+    </a>
+</body>
+
+<script>
+    const videoEl = document.querySelector('video')
+    const imgEl = document.querySelector('img')
+    const canvasEl = document.querySelector('canvas')
+    const downloadLinkEl = document.querySelector('a')
+
+    navigator.getUserMedia = (navigator.getUserMedia ||
+        navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia ||
+        navigator.msGetUserMedia)
+
+    function getUserVideo() {
+        navigator.getUserMedia(
+            { video: true },
+            (stream) => {
+                videoEl.srcObject = stream
+            },
+            err => console.error(err)
+        )
+    }
+
+    function takeSnap() {
+        let ctx = canvasEl.getContext('2d')
+
+        ctx.drawImage(videoEl, 0, 0, canvasEl.width, canvasEl.height)
+
+        imgEl.src = canvasEl.toDataURL("image/png")
+        downloadLinkEl.href = canvasEl.toDataURL("image/png")
+    }
+    getUserVideo()
+</script>
+
+</html>
