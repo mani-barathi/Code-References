@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speak Synthesis</title>
+</head>
+
+<body style="background-color: whitesmoke;">
+    <center>
+        <h1>SpeechSynthesis </h1>
+        <h3></h3>
+        <form autocomplete="off">
+            <input name="text" type="text" required placeholder="type here...">
+            <button type="submit">Speak</button>
+        </form>
+    </center>
+
+    <script>
+        const form = document.querySelector('form')
+        const errorText = document.querySelector('h3')
+
+        function handleFormSubmit(event) {
+            event.preventDefault()
+            const text = form.text.value
+            const voice = new SpeechSynthesisUtterance()
+            if (voice) {
+                voice.volume = 1
+                voice.rate = 0.8
+                voice.pitch = 1
+                voice.text = text
+                window.speechSynthesis.speak(voice)
+            } else {
+                errorText.textContent = 'Your Browser does not support Speech Synthesis API'
+            }
+            form.text.value = ''
+        }
+
+        form.addEventListener('submit', handleFormSubmit)
+    </script>
+</body>
+
+</html>
