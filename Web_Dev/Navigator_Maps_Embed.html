@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigator_GoogleMaps</title>
+</head>
+
+<body style="background-color: whitesmoke;">
+    <center>
+        <h2>Please Allow Us to get your Location</h2>
+        <h3></h3>
+        <iframe src="" frameborder="0" width="90%"></iframe>
+    </center>
+
+    <script>
+        const errorText = document.querySelector('h2')
+        const locationText = document.querySelector('h3')
+        const iframe = document.querySelector('iframe')
+        //https://maps.google.com/maps?q=${latitude},${longitude}&t=&z=15&ie=UTF8&iwloc=&output=embed
+
+        function locationSuccess(position) {
+            const { latitude, longitude } = position.coords
+            const googleMapsURL = `https://maps.google.com/maps?q=${latitude},${longitude}&t=&z=15&ie=UTF8&iwloc=&output=embed`
+
+            locationText.textContent = `Your Current Location is (${latitude}, ${longitude})`
+            iframe.src = googleMapsURL
+
+            errorText.textContent = ''
+        }
+
+        function locationError(err) {
+            errorText.textContent = 'Something Went Wrong'
+            console.log(err)
+        }
+
+        // Check whether the browser supports Geolocation
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(locationSuccess, locationError)
+        } else {
+            errorText.textContent = 'Geolocation is not supported by your browser'
+        }
+    </script>
+</body>
+
+</html>
