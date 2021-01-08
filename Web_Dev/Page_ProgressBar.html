@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page ProgessBar Indicator</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 1rem;
+            background-color: lightgray;
+            position: sticky;
+            top: 0;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: chartreuse;
+            width: 0%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="progress-container">
+        <div class="progress"></div>
+    </div>
+    <div style="height:300vh"></div>
+
+    <script>
+        const progress = document.querySelector('.progress')
+
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const viewPortHeight = document.documentElement.clientHeight
+            const totalScrollLength = document.body.scrollHeight || document.documentElement.scrollHeight
+
+            const height = (currentScroll / (totalScrollLength - viewPortHeight)) * 100
+
+            progress.style.width = `${height}%`
+        })
+
+        // To handle Progress when the page is resized...(Not Really Required)
+        window.addEventListener('resize', () => {
+            const currentScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const viewPortHeight = document.documentElement.clientHeight
+            const totalScrollLength = document.body.scrollHeight || document.documentElement.scrollHeight
+
+            console.log('resized', viewPortHeight)
+
+            const height = (currentScroll / (totalScrollLength - viewPortHeight)) * 100
+
+            progress.style.width = `${height}%`
+        })
+    </script>
+</body>
+
+</html>
