@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title>Notifiction</title>
+</head>
+
+<body>
+    <button onclick="notifyMe()">Click</button>
+
+    <script>
+        function notifyMe() {
+            // Let's check if the browser supports notifications
+            if (!("Notification" in window)) {
+                alert("This browser does not support desktop notification");
+            }
+
+            // Let's check whether notification permissions have already been granted
+            else if (Notification.permission === "granted") {
+                // If it's okay let's create a notification
+                const myNoti = new Notification('This is the Title💙', {
+                    body: 'This is body of the Notifiction💛',
+                    icon: 'https://raw.githubusercontent.com/mani-barathi/mani-barathi.github.io/master/assets/favicon.ico',
+                    image: 'https://avatars.githubusercontent.com/u/49336839?s=460&u=fbbc21b3ee2066b82cf7ddf1205524757ac5f3f4&v=4'
+                });
+            }
+
+            // Otherwise, we need to ask the user for permission
+            else if (Notification.permission !== "denied") {
+                Notification.requestPermission().then(function (permission) {
+                    // If the user accepts, let's create a notification
+                    if (permission === "granted") {
+                        var notification = new Notification("Hi there!");
+                    }
+                });
+            }
+
+        }
+    </script>
+</body>
+
+</html>
