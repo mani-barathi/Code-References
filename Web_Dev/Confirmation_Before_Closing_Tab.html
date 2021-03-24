@@ -1,0 +1,28 @@
+<html>
+
+<head>
+</head>
+
+<h3 style="max-width: 500px;">
+    The beforeunload function is triggeredjust before the browser or tab is to beclosed or the page is to be
+    reloaded.Modern browsers require some interactionwith the page, otherwise the dialog boxis not shown.
+</h3>
+
+<h2> User Interaction is Required! </h2>
+
+<h1> Close this Tab to see the action🚀</h1>
+
+<script>
+
+    let changed = true
+
+    window.addEventListener('beforeunload', (event) => {
+        // Based on a Condition (still user interaction is required)
+        if (changed) {
+            event.preventDefault()
+            event.returnValue = 'You have unfinished changes!'
+        }
+    })
+</script>
+
+</html>
