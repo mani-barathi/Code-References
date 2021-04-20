@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./base.css" />
+    <link rel="stylesheet" href="./form.css" />
+    <title>Base CSS</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>This is some text</h1>
+      <h2>This is some text</h2>
+      <h3>This is some text</h3>
+      <h4>This is some text</h4>
+      <h5>This is some text</h5>
+      <h6>This is some text</h6>
+
+      <div class="mb mt">
+        <a href="/">Link 1</a>
+        <a href="/">Link 2</a>
+        <a href="/">Link 3</a>
+      </div>
+
+      <div class="mb mt">
+        <p>This is a P Tag</p>
+        <strong>This is a strong Tag</strong>
+      </div>
+
+      <h3>Buttons</h3>
+      <div class="mb mt">
+        <button class="btn sm">.btn .sm</button>
+        <button class="btn">.btn</button>
+        <button class="btn lg" disabled>.btn .lg</button>
+      </div>
+
+      <div class="mb mt">
+        <button class="btn secondary sm">.btn .secondary .sm</button>
+        <button class="btn secondary">.btn</button>
+        <button class="btn secondary lg">.btn .secondary .lg</button>
+      </div>
+
+      <form class="mt mb" style="max-width: 500px">
+        <h2>Forms</h2>
+        <div class="mb">
+          <label class="form-label">.form-label</label>
+          <input
+            type="text"
+            class="form-input sm"
+            placeholder=".form-input .sm"
+          />
+        </div>
+        <div class="mb">
+          <label class="form-label">.form-label</label>
+          <input type="password" class="form-input" placeholder=".form-input" />
+        </div>
+        <div class="mb">
+          <label class="form-label">.form-label</label>
+          <input
+            type="email"
+            class="form-input lg"
+            placeholder=".form-input .lg"
+          />
+        </div>
+
+        <div class="mb">
+          <label class="form-label">.form-label</label>
+          <textarea
+            rows="5"
+            class="form-input"
+            placeholder=".form-input"
+          ></textarea>
+        </div>
+      </form>
+
+      <h5>Inline forms have have a class of .form-inline-group</h5>
+      <form class="mt mb form-inline-group" style="max-width: 500px">
+        <input
+          type="text"
+          class="form-input flex-1"
+          placeholder=".form-input .flex-1"
+        />
+        <button class="btn ml">Send</button>
+      </form>
+
+      <form class="mt mb" style="max-width: 500px">
+        <div class="mb form-inline-group">
+          <label class="form-label">.form-inline-group</label>
+          <input
+            type="number"
+            class="form-input ml"
+            placeholder=".form-input .ml"
+          />
+        </div>
+        <div class="mb form-inline-group">
+          <label class="form-label">.form-inline-group</label>
+          <input
+            type="month"
+            class="form-input ml"
+            placeholder=".form-input .ml"
+          />
+        </div>
+      </form>
+
+      <div style="margin: 10rem 0"></div>
+    </div>
+  </body>
+</html>
